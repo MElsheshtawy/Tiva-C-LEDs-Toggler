@@ -1,0 +1,204 @@
+###############################################################################
+#
+# IAR ELF Linker V9.32.2.340/W64 for ARM                  26/Jul/2023  21:11:59
+# Copyright 2007-2023 IAR Systems AB.
+#
+#    Output file  =  D:\working\programming\Project gdsc\Debug\Exe\main.out
+#    Map file     =  D:\working\programming\Project gdsc\Debug\List\main.map
+#    Command line =
+#        -f "D:\working\programming\Project gdsc\Debug\Exe\main.out.rsp"
+#        ("D:\working\programming\Project gdsc\Debug\Obj\DIO.o"
+#        "D:\working\programming\Project gdsc\Debug\Obj\main.o"
+#        "D:\working\programming\Project gdsc\Debug\Obj\startup_ewarm.o"
+#        --no_out_extension -o "D:\working\programming\Project
+#        gdsc\Debug\Exe\main.out" --redirect _Printf=_PrintfFullNoMb --redirect
+#        _Scanf=_ScanfFullNoMb --map "D:\working\programming\Project
+#        gdsc\Debug\List\main.map" --config "C:\Program Files\IAR
+#        Systems\Embedded Workbench
+#        9.1\arm/config/linker/TexasInstruments/TM4C123GH6.icf" --semihosting
+#        C:\ti\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a
+#        --entry __iar_program_start --vfe --text_out locale --cpu=Cortex-M4
+#        --fpu=VFPv4_sp)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because --advanced_heap
+was not specified and the application did not appear to
+be primarily optimized for speed.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x3'ffff] { ro };
+define block CSTACK with size = 4K, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'7fff] {
+          rw, block CSTACK, block HEAP };
+do not initialize { rw section .noinit };
+
+  Section          Kind         Address   Size  Object
+  -------          ----         -------   ----  ------
+"A0":                                    0x26c
+  .intvec          const            0x0  0x26c  startup_ewarm.o [1]
+                                - 0x26c  0x26c
+
+"P1":                                    0x870
+  .text            ro code        0x26c  0x5c8  DIO.o [1]
+  .text            ro code        0x834  0x190  main.o [1]
+  .text            ro code        0x9c4   0x38  zero_init3.o [4]
+  .text            ro code        0x9fc   0x28  data_init.o [4]
+  .text            ro code        0xa24   0x22  fpinit_M.o [3]
+  .iar.init_table  const          0xa48   0x10  - Linker created -
+  .text            ro code        0xa58   0x1e  startup_ewarm.o [1]
+  .text            ro code        0xa78   0x1c  cstartup_M.o [4]
+  .text            ro code        0xa94   0x1e  cmain.o [4]
+  .text            ro code        0xab2    0x4  low_level_init.o [2]
+  .text            ro code        0xab6    0x4  exit.o [2]
+  .text            ro code        0xabc    0xa  cexit.o [4]
+  .text            ro code        0xac8   0x14  exit.o [5]
+  .rodata          const          0xadc    0x0  zero_init3.o [4]
+                                - 0xadc  0x870
+
+"P2", part 1 of 2:                         0x4
+  .bss             zero     0x2000'0000    0x4  main.o [1]
+                          - 0x2000'0004    0x4
+
+"P2", part 2 of 2:                       0x200
+  .noinit          uninit   0x2000'0004  0x200  startup_ewarm.o [1]
+                          - 0x2000'0204  0x200
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0xadc     0x3'ffff  0x3'f524
+  0x2000'0204  0x2000'7fff    0x7dfc
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x4:
+          0x2000'0000   0x4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+command line/config:
+    -------------------------------------------
+    Total:
+
+D:\working\programming\Project gdsc\Debug\Obj: [1]
+    DIO.o               1'480
+    main.o                400                 4
+    startup_ewarm.o        30      620      512
+    -------------------------------------------
+    Total:              1'910      620      516
+
+dl7M_tln.a: [2]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+m7M_tls.a: [3]
+    fpinit_M.o             34
+    -------------------------------------------
+    Total:                 34
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    cstartup_M.o           28
+    data_init.o            40
+    zero_init3.o           56
+    -------------------------------------------
+    Total:                164
+
+shb_l.a: [5]
+    exit.o                 20
+    -------------------------------------------
+    Total:                 20
+
+    Gaps                    6        2
+    Linker created                  16
+-----------------------------------------------
+    Grand Total:        2'142      638      516
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base         0xa48          --   Gb  - Linker created -
+.iar.init_table$$Limit        0xa58          --   Gb  - Linker created -
+?main                         0xa95         Code  Gb  cmain.o [4]
+DIO_Init                      0x287  0x266  Code  Gb  DIO.o [1]
+DIO_InterruptInit             0x641  0x10e  Code  Gb  DIO.o [1]
+DIO_WritePin                  0x4ed  0x124  Code  Gb  DIO.o [1]
+FaultISR                      0xa73    0x2  Code  Lc  startup_ewarm.o [1]
+GPIO_Portf_handler            0x835   0x70  Code  Gb  main.o [1]
+IntDefaultHandler             0xa75    0x2  Code  Lc  startup_ewarm.o [1]
+NmiSR                         0xa71    0x2  Code  Lc  startup_ewarm.o [1]
+Region$$Table$$Base           0xa48          --   Gb  - Linker created -
+Region$$Table$$Limit          0xa58          --   Gb  - Linker created -
+ResetISR                      0xa59   0x12  Code  Gb  startup_ewarm.o [1]
+__cmain                       0xa95         Code  Gb  cmain.o [4]
+__exit                        0xac9   0x14  Code  Gb  exit.o [5]
+__iar_data_init3              0x9fd   0x28  Code  Gb  data_init.o [4]
+__iar_init_vfp                0xa25         Code  Gb  fpinit_M.o [3]
+__iar_program_start           0xa79         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3              0x9c5   0x38  Code  Gb  zero_init3.o [4]
+__low_level_init              0xab3    0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0  0x26c  Data  Gb  startup_ewarm.o [1]
+_call_main                    0xaa1         Code  Gb  cmain.o [4]
+_exit                         0xabd         Code  Gb  cexit.o [4]
+delay                         0x26d   0x1a  Code  Gb  DIO.o [1]
+exit                          0xab7    0x4  Code  Gb  exit.o [2]
+main                          0x8a5   0xb0  Code  Gb  main.o [1]
+pui32Stack              0x2000'0004  0x200  Data  Lc  startup_ewarm.o [1]
+start_it                      0x961   0x64  Code  Gb  main.o [1]
+toggle_pin                    0x611   0x30  Code  Gb  DIO.o [1]
+x                       0x2000'0000    0x4  Data  Gb  main.o [1]
+
+
+[1] = D:\working\programming\Project gdsc\Debug\Obj
+[2] = dl7M_tln.a
+[3] = m7M_tls.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  2'142 bytes of readonly  code memory
+    638 bytes of readonly  data memory
+    516 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
